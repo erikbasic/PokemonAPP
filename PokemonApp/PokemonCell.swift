@@ -27,7 +27,7 @@ class PokemonCell: UITableViewCell{
 //  MARK: - Variables And Properties
   
   var delegate: PokemonCellDelegate?
-  
+
 // MARK: - IBActions
   
   

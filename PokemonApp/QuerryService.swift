@@ -88,8 +88,8 @@ class QueryService{
     
     var index = 0
     
-    for pokemonDictionary in array{
-      if let pokemonDictionary = pokemonDictionary as? JSONDictionary,
+    for pokemonDictionary in array{  // za svaki dictionary  arrayu
+      if let pokemonDictionary = pokemonDictionary as? JSONDictionary, // provjera je li ovo json dictionary
          let previewName = pokemonDictionary["name"] as? String{
         pokemons.append(Pokemon(name: previewName))
         index += 1
