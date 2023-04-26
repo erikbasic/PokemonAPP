@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Pokemon Cell Delegate Protocol
-protocol PokemonCellDelegate{
+protocol PokemonCellDelegate: AnyObject {
   func addTapped(_ cell: PokemonCell)
 }
 
@@ -16,26 +16,25 @@ protocol PokemonCellDelegate{
 
 class PokemonCell: UITableViewCell{
   
-//  MARK: - Class constants
+  //  MARK: - Class constants
   static let identifier = "PokemonCell"
   
-//  MARK: - IBOutlets
+  //  MARK: - IBOutlets
   
-  @IBOutlet weak var pokemonLabel: UITextField!
-  @IBOutlet weak var addButton: UIButton!
+  @IBOutlet weak var pokemonLabel: UILabel!
   
-//  MARK: - Variables And Properties
+  //  MARK: - Variables And Properties
   
-  var delegate: PokemonCellDelegate?
-
-// MARK: - IBActions
+  weak var delegate: PokemonCellDelegate?
+  
+  // MARK: - IBActions
   
   
   @IBAction func addTapped(_ sender: AnyObject) {
     delegate?.addTapped(self)
   }
   
-//  MARK: - Internal Methods
+  //  MARK: - Internal Methods
   
   func configure(pokemon: Pokemon){
     pokemonLabel.text = pokemon.name

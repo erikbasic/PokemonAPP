@@ -24,22 +24,14 @@
             </objects>
             <point key="canvasLocation" x="-85" y="-141"/>
         </scene>
-        <!--Pokemons-->
+        <!--Pokemons VC-->
         <scene sceneID="49g-iK-Wyg">
             <objects>
-                <viewController id="K5N-g1-XMI" customClass="SearchViewController" sceneMemberID="viewController">
+                <viewController id="K5N-g1-XMI" userLabel="Pokemons VC" customClass="PokemonsViewController" customModule="PokemonApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ggE-Kl-0Cp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAQ-UO-GPs">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="K5N-g1-XMI" id="Mj6-Nt-EDs"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Z9M-o4-sB5">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -57,15 +49,16 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="gray" title="Add"/>
                                                     <connections>
-                                                        <action selector="addTapped:" destination="7rU-6o-4SU" eventType="touchUpInside" id="iOC-FC-e0x"/>
+                                                        <action selector="addTapped:" destination="7rU-6o-4SU" eventType="touchUpInside" id="WkH-ee-lZY"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Pokemon Label" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMZ-HY-c8e">
-                                                    <rect key="frame" x="20" y="4" width="118" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pikatchu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3f-mT-Tnc">
+                                                    <rect key="frame" x="20" y="11" width="66" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="eQX-C0-1Qg" secondAttribute="trailing" constant="10" id="sIx-zY-UBN"/>
@@ -73,17 +66,23 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addButton" destination="eQX-C0-1Qg" id="j1m-13-6Jn"/>
-                                            <outlet property="pokemonLabel" destination="uMZ-HY-c8e" id="QIf-bt-1Qn"/>
+                                            <outlet property="pokemonLabel" destination="c3f-mT-Tnc" id="vVf-Jv-d3q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="K5N-g1-XMI" id="aPe-AG-dcp"/>
+                                    <outlet property="delegate" destination="K5N-g1-XMI" id="Tgt-ae-93e"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CrG-MY-bgf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pokemons" id="hM7-sI-3Gc"/>
+                    <connections>
+                        <outlet property="tableView" destination="Z9M-o4-sB5" id="oUZ-CF-PkU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esG-Al-rqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

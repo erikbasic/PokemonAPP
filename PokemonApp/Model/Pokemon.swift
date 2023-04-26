@@ -9,18 +9,17 @@ import Foundation.NSURL
 
 // MARK: - Track
 
-class Pokemon{
+struct Pokemon {
   
-//  MARK: - Constants
+  //  MARK: - Constants
   let name: String
+  let imageUrl: URL?
   
-//  MARK: - Variables and Properties
-  
+  //  MARK: - Variables and Properties
   var isFavorite = false
   
-//  MARK: - Initialization
-  
-  init(name: String){
-    self.name = name
+  var finalName: String {
+    self.name.capitalized
   }
+    
 }
