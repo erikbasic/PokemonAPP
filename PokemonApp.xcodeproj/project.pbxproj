@@ -70,7 +70,6 @@
 				D5588A0429F90FB2006A0C2D /* Model */,
 				D546E72129F7B854000BAA7A /* AppDelegate.swift */,
 				D546E72329F7B854000BAA7A /* SceneDelegate.swift */,
-				D546E72529F7B854000BAA7A /* PokemonsViewController.swift */,
 				D546E72729F7B854000BAA7A /* Main.storyboard */,
 				D546E72D29F7B857000BAA7A /* Assets.xcassets */,
 				D546E72F29F7B857000BAA7A /* LaunchScreen.storyboard */,
@@ -94,6 +93,7 @@
 		D5588A0929F915EE006A0C2D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D546E72529F7B854000BAA7A /* PokemonsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
