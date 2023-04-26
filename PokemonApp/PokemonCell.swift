@@ -14,7 +14,7 @@ protocol PokemonCellDelegate: AnyObject {
 
 // MARK: - Pokemon Cell
 
-class PokemonCell: UITableViewCell{
+class PokemonCell: UITableViewCell {
   
   //  MARK: - Class constants
   static let identifier = "PokemonCell"

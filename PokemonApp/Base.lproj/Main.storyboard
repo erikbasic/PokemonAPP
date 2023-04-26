@@ -22,7 +22,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBI-yH-Oe4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-85" y="-141"/>
+            <point key="canvasLocation" x="-86" y="-61"/>
         </scene>
         <!--Pokemons VC-->
         <scene sceneID="49g-iK-Wyg">
@@ -67,6 +67,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="pokemonLabel" destination="c3f-mT-Tnc" id="vVf-Jv-d3q"/>
+                                            <segue destination="lPi-J0-gl2" kind="show" id="ENq-K5-5aj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -75,13 +76,21 @@
                                     <outlet property="delegate" destination="K5N-g1-XMI" id="Tgt-ae-93e"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rLI-Sk-vjp">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CrG-MY-bgf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rLI-Sk-vjp" firstAttribute="centerX" secondItem="ggE-Kl-0Cp" secondAttribute="centerX" id="LMq-Tm-4Vc"/>
+                            <constraint firstItem="rLI-Sk-vjp" firstAttribute="centerY" secondItem="ggE-Kl-0Cp" secondAttribute="centerY" id="gZr-xw-yaK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pokemons" id="hM7-sI-3Gc"/>
                     <connections>
-                        <outlet property="tableView" destination="Z9M-o4-sB5" id="oUZ-CF-PkU"/>
+                        <outlet property="activityIndicator" destination="rLI-Sk-vjp" id="EVi-85-4tn"/>
+                        <outlet property="tableView" destination="Z9M-o4-sB5" id="c6E-3U-taU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esG-Al-rqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -105,6 +114,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbW-eQ-grk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-992" y="-443"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IiD-bt-HMK">
+            <objects>
+                <viewController id="lPi-J0-gl2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Gr-Tz-vcT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Tu2-du-Tbd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="owe-gV-2Hy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tzA-h7-7yg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="956" y="-747"/>
         </scene>
     </scenes>
     <resources>

@@ -33,7 +33,7 @@ class QueryService {
   
   //  MARK: - Methods
   
-  func getPokemons(completion: @escaping ([Pokemon]?, String) -> ()) {
+  func getPokemons(completion: @escaping ([Pokemon], String) -> ()) {
     dataTask?.cancel()
     
     if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/") {
@@ -56,7 +56,7 @@ class QueryService {
           self?.parsePokemonJsonFromData(data)
           
           DispatchQueue.main.async {
-            completion(self?.pokemons, self?.errorMessage ?? "")
+            completion(self?.pokemons ?? [], self?.errorMessage ?? "")
           }
         }
       }
