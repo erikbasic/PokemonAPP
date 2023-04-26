@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 //
@@ -65,6 +66,10 @@ class QueryService {
   }
   
   
+  func getPokemonImage(completion: @escaping (UIImage?) -> ()) {
+    
+  }
+   
   // MARK: - Private Methods
   
   private func parsePokemonJsonFromData(_ data: Data) {

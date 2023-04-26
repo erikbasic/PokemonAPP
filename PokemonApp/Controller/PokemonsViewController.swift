@@ -12,6 +12,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   private var pokemons = [Pokemon]()
+  private var selectedPokemon: Pokemon?
   private let queryService = QueryService()
   
   override func viewDidLoad() {
@@ -44,6 +45,9 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     // Get the new view controller using segue.destination.
     // Pass the selected object to the new view controller.
+    
+    let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
+    pokemonDetailViewController.pokemon = selectedPokemon
   }
   
   
@@ -63,8 +67,9 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   
   // MARK: - UITableViewDelegate
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    selectedPokemon = pokemons[indexPath.row]
+    return indexPath
   }
   
   
