@@ -67,12 +67,17 @@ class QueryService {
   
   
   func getPokemonImage(completion: @escaping (UIImage?) -> ()) {
-    
+ 
   }
    
   // MARK: - Private Methods
   
   private func parsePokemonJsonFromData(_ data: Data) {
+    
+   // ova funkcija dobiva response u obliku JSON objekta
+   // response je cijeli JSON, u tom responsu ulazimo u results koji sadrzi array pokemona.
+   // za svaki pokemon u arrayu ulazimo u pojedini element i dohvacamo name
+    
     var response: JSONDictionary?
     pokemons.removeAll()
     
