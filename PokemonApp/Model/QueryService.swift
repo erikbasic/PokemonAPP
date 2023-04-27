@@ -66,7 +66,7 @@ class QueryService {
   }
   
   
-  func getPokemonImage(completion: @escaping (UIImage?) -> ()) {
+  func getPokemonURL(completion: @escaping (UIImage?) -> ()) {
  
   }
    
@@ -98,7 +98,7 @@ class QueryService {
         let pokemonDictionary = pokemonDictionary as? JSONDictionary, // provjera je li ovo json dictionary
         let pokemonName = pokemonDictionary["name"] as? String
       {
-        let pokemon = Pokemon(name: pokemonName, imageUrl: nil)
+        let pokemon = Pokemon(name: pokemonName, pokemonURL: nil)
         pokemons.append(pokemon)
       } else {
         errorMessage += "Problem parsing pokemonDictionary\n"

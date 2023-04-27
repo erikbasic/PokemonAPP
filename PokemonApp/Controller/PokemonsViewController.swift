@@ -36,6 +36,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
       self.activityIndicator.stopAnimating()
     }
     
+
     
   }
   

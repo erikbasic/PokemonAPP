@@ -13,7 +13,7 @@ struct Pokemon {
   
   //  MARK: - Constants
   let name: String
-  let imageUrl: URL?
+  let pokemonURL: URL?
   
   //  MARK: - Variables and Properties
   var isFavorite = false

@@ -9,14 +9,19 @@ import UIKit
 
 class PokemonDetailViewController: UIViewController {
   @IBOutlet weak var pokemonImageView: UIImageView!
+  @IBOutlet weak var weightLabel: UILabel!
+  
   var pokemon: Pokemon!
+  private var pokemonDetails = [DetailsOfPokemon]()
   private var favoriteButton: UIBarButtonItem!
   private let queryService = QueryService()
+  private let detailQuery = DetailQueryService()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
+  
     title = pokemon.finalName
     favoriteButton = navigationItem.rightBarButtonItem
     if pokemon.isFavorite {
@@ -28,12 +33,21 @@ class PokemonDetailViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+
+//    Load data source for detail
+    detailQuery.getPokemonDetails{ (pokemonDetails: [DetailsOfPokemon], error: String) in
+      self.pokemonDetails = pokemonDetails
+    }
     
-    queryService.getPokemonImage { (pokemonImage: UIImage?) in
+    queryService.getPokemonURL { (pokemonImage: UIImage?) in
       if let pokemonImage = pokemonImage {
         self.pokemonImageView.image = pokemonImage
       }
     }
+  
+  
+
+    
   }
   
   /*

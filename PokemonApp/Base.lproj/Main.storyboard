@@ -123,6 +123,13 @@
                                     <constraint firstAttribute="width" constant="300" id="MYh-5P-Lgb"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q56-QB-9Hx">
+                                <rect key="frame" x="175" y="668" width="54" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tu2-du-Tbd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -136,6 +143,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="pokemonImageView" destination="T0h-o7-UyN" id="bb9-Es-8PV"/>
+                        <outlet property="weightLabel" destination="Q56-QB-9Hx" id="6HO-hX-6Sf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzA-h7-7yg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
