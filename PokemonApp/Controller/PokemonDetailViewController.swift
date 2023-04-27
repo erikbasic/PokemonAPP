@@ -11,7 +11,7 @@ class PokemonDetailViewController: UIViewController {
   @IBOutlet weak var pokemonImageView: UIImageView!
   @IBOutlet weak var weightLabel: UILabel!
   
-  var pokemon: Pokemon!
+  var pokemon: PokemonBase!
   private var pokemonDetails = [DetailsOfPokemon]()
   private var favoriteButton: UIBarButtonItem!
   private let queryService = QueryService()
@@ -33,10 +33,10 @@ class PokemonDetailViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-
-//    Load data source for detail
-    detailQuery.getPokemonDetails{ (pokemonDetails: [DetailsOfPokemon], error: String) in
-      self.pokemonDetails = pokemonDetails
+    
+    //    Load data source for detail
+    detailQuery.getPokemonDetailsFor(pokemon) { pokemon, errorString in
+      let i = 9
     }
     
     queryService.getPokemonURL { (pokemonImage: UIImage?) in
@@ -71,5 +71,4 @@ class PokemonDetailViewController: UIViewController {
       favoriteButton.image = UIImage(systemName: "star.fill")
     }
   }
-  
 }

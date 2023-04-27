@@ -9,17 +9,9 @@ import Foundation.NSURL
 
 // MARK: - Track
 
-struct Pokemon {
+class Pokemon: PokemonBase {
   
-  //  MARK: - Constants
-  let name: String
-  let pokemonURL: URL?
+  var spriteUrl: URL?
   
-  //  MARK: - Variables and Properties
-  var isFavorite = false
   
-  var finalName: String {
-    self.name.capitalized
-  }
-    
 }

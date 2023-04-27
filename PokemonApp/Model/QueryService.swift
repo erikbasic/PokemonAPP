@@ -25,7 +25,7 @@ class QueryService {
   
   var dataTask: URLSessionDataTask?
   var errorMessage = ""
-  var pokemons: [Pokemon] = []
+  var pokemons: [PokemonBase] = []
   
   //  MARK: - Type Alias
   typealias JSONDictionary = [String: Any]
@@ -34,7 +34,7 @@ class QueryService {
   
   //  MARK: - Methods
   
-  func getPokemons(completion: @escaping ([Pokemon], String) -> ()) {
+  func getPokemons(completion: @escaping ([PokemonBase], String) -> ()) {
     dataTask?.cancel()
     
     if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/") {
@@ -70,6 +70,11 @@ class QueryService {
  
   }
    
+  func getPokemonImageFromUrl(_ url: URL, completin: @escaping (UIImage?) -> ()) {
+    
+  }
+  
+  
   // MARK: - Private Methods
   
   private func parsePokemonJsonFromData(_ data: Data) {
@@ -98,7 +103,8 @@ class QueryService {
         let pokemonDictionary = pokemonDictionary as? JSONDictionary, // provjera je li ovo json dictionary
         let pokemonName = pokemonDictionary["name"] as? String
       {
-        let pokemon = Pokemon(name: pokemonName, pokemonURL: nil)
+        let pokemon = PokemonBase()
+        pokemon.name = pokemonName
         pokemons.append(pokemon)
       } else {
         errorMessage += "Problem parsing pokemonDictionary\n"

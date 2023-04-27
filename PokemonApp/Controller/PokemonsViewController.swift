@@ -11,8 +11,8 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  private var pokemons = [Pokemon]()
-  private var selectedPokemon: Pokemon?
+  private var pokemons = [PokemonBase]()
+  private var selectedPokemon: PokemonBase?
   private let queryService = QueryService()
   
   override func viewDidLoad() {
@@ -28,7 +28,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     activityIndicator.startAnimating()
     
     // Load data source
-    queryService.getPokemons { (pokemons: [Pokemon], error: String) in
+    queryService.getPokemons { (pokemons: [PokemonBase], error: String) in
       self.pokemons = pokemons
       self.tableView.reloadData()
       

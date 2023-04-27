@@ -8,14 +8,6 @@
 import Foundation
 import UIKit
 
-
-// funkcionirati ce vrlo slicno ko queryservice
-// 1. stvoriti novi URL session u kojem ulazim u pokemona
-// 2. doci do key-a back-default
-// 3. u pokemona ulazim samo ako je pokemon odabran; inace nema potrebe za detail queryem
-// 4 pokemon je odabran samo ako je korisnik kliknuo na njega, tj sam query se samo tada radi
-//
-
 class DetailQueryService{
   
   // MARK: - Constants
@@ -34,16 +26,15 @@ class DetailQueryService{
   typealias DetailQueryResult = ([DetailsOfPokemon]?, String) -> Void
   
   
-//  MARK: - Methods
+  //  MARK: - Methods
   
   // trebam nekako dohvatiti pokemon name
-  func getPokemonDetails(completion: @escaping ([DetailsOfPokemon], String) -> ()) {
+  func getPokemonDetailsFor(_ pokemonBase: PokemonBase, completion: @escaping (Pokemon?, String?) -> ()) {
     dataTask?.cancel()
     
-    
-    // HARDCODANO za testiranje
-    if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/bulbasaur/"){
-      guard let url = urlComponents.url else{
+    let pokemonName = pokemonBase.name!
+    if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/\(pokemonName)/") {
+      guard let url = urlComponents.url else {
         return
       }
       dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
@@ -53,15 +44,24 @@ class DetailQueryService{
         
         if let error = error {
           self?.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
+          DispatchQueue.main.async {
+            completion(nil, self?.errorMessage)
+            return
+          }
         } else if
           let data = data,
           let response = response as? HTTPURLResponse,
           response.statusCode == 200
         {
-          self?.parsePokemonDetailsJsonFromData(data)
+          // OK
+          let pokemon = self?.parsePokemonDetailsJsonFromData(data, pokemonBase: pokemonBase)
           
           DispatchQueue.main.async {
-            completion(self?.pokemonsDetails ?? [], self?.errorMessage ?? "")
+            completion(pokemon, nil)
+          }
+        } else {
+          DispatchQueue.main.async {
+            completion(nil, self?.errorMessage)
           }
         }
       }
@@ -69,7 +69,7 @@ class DetailQueryService{
     }
   }
   
-  private func parsePokemonDetailsJsonFromData (_ data: Data){
+  private func parsePokemonDetailsJsonFromData(_ data: Data, pokemonBase: PokemonBase) -> Pokemon? {
     
     var response: JSONDictionary?
     pokemonsDetails.removeAll()
@@ -78,29 +78,55 @@ class DetailQueryService{
       response = try JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary
     } catch {
       errorMessage += "JSONSerialization error: \(error.localizedDescription)\n"
-      return
+      return nil
     }
-
+    
     guard let pokemonWeight  = response!["weight"] as? Int else {
       errorMessage += "Dictionary does not containt weight key\n"
-      return
+      return nil
     }
-    
-    guard let spritesArray = response!["sprites"] as? [Any] else {
+  
+    guard let spritesJson = response!["sprites"] as? JSONDictionary else {
       errorMessage += "Dictionary does not contain sprites key\n"
-      return
+      return nil
     }
     
-    for urlArray in spritesArray {
-     if
-      let urlArray = urlArray as? JSONDictionary,
-      let pokemonURL = urlArray["back_default"] as? URL
-      {
-       let pokemonDetail = DetailsOfPokemon(detailWeight: pokemonWeight, imageURL: pokemonURL)
-       pokemonsDetails.append(pokemonDetail)
-     }else{
-       errorMessage += "Problem parsing urlArray"
-     }
+    guard let otherJson = spritesJson.first(where: { $0.key == "other" })?.value as? JSONDictionary else {
+      return nil
     }
+    
+    guard let homeJson = otherJson.first(where: { $0.key == "home" })?.value as? JSONDictionary else {
+      return nil
+    }
+    
+    guard
+      let frontDefaultString = homeJson.first(where: { $0.key == "front_default" })?.value as? String,
+      let spriteUrl = URL(string: frontDefaultString) else
+    {
+      return nil
+    }
+    
+    
+    let pokemon = Pokemon()
+    pokemon.name = pokemonBase.name
+    pokemon.spriteUrl = spriteUrl
+    
+    return pokemon
+    
+    
+//    for (spriteJsonKey, spriteJsonValue) in spritesJson {
+//      let i = 8
+//      if
+//        let otherJson = spriteJsonKey["other"] as? JSONDictionary,
+//        let homeJson = otherJson["home"] as? JSONDictionary,
+//        let frontDefaultJson = homeJson["front_default"] as? JSONDictionary
+//      {
+//        let i = 8
+////        let pokemonDetail = DetailsOfPokemon(detailWeight: pokemonWeight, imageURL: pokemonURL)
+////        pokemonsDetails.append(pokemonDetail)
+//      }else{
+//        errorMessage += "Problem parsing urlArray"
+//      }
+//    }
   }
 }
