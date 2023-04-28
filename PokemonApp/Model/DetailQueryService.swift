@@ -85,6 +85,11 @@ class DetailQueryService{
       errorMessage += "Dictionary does not containt weight key\n"
       return nil
     }
+    
+    guard let pokemonXp  = response!["base_experience"] as? Int else {
+      errorMessage += "Dictionary does not experience weight key\n"
+      return nil
+    }
   
     guard let spritesJson = response!["sprites"] as? JSONDictionary else {
       errorMessage += "Dictionary does not contain sprites key\n"
@@ -111,23 +116,9 @@ class DetailQueryService{
     pokemon.name = pokemonBase.name
     pokemon.spriteUrl = spriteUrl
     pokemon.pokemonWeight = pokemonWeight
+    pokemon.pokemonExp = pokemonXp
     
     return pokemon
-    
-    
-//    for (spriteJsonKey, spriteJsonValue) in spritesJson {
-//      let i = 8
-//      if
-//        let otherJson = spriteJsonKey["other"] as? JSONDictionary,
-//        let homeJson = otherJson["home"] as? JSONDictionary,
-//        let frontDefaultJson = homeJson["front_default"] as? JSONDictionary
-//      {
-//        let i = 8
-////        let pokemonDetail = DetailsOfPokemon(detailWeight: pokemonWeight, imageURL: pokemonURL)
-////        pokemonsDetails.append(pokemonDetail)
-//      }else{
-//        errorMessage += "Problem parsing urlArray"
-//      }
-//    }
+  
   }
 }

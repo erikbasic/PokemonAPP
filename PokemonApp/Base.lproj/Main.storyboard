@@ -116,6 +116,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q56-QB-9Hx">
+                                <rect key="frame" x="169" y="668" width="145" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hu-u9-XWP">
+                                <rect key="frame" x="175" y="697" width="139" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-o7-UyN">
                                 <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
                                 <constraints>
@@ -123,25 +137,16 @@
                                     <constraint firstAttribute="width" constant="300" id="MYh-5P-Lgb"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q56-QB-9Hx">
-                                <rect key="frame" x="169.66666666666666" y="668" width="53.666666666666657" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-ZH-7gg">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-ZH-7gg">
                                 <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tu2-du-Tbd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Q56-QB-9Hx" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="5hk-aF-SUu"/>
-                            <constraint firstItem="Z22-ZH-7gg" firstAttribute="centerY" secondItem="8Gr-Tz-vcT" secondAttribute="centerY" id="E1Q-WG-neN"/>
-                            <constraint firstItem="Tu2-du-Tbd" firstAttribute="bottom" secondItem="Q56-QB-9Hx" secondAttribute="bottom" constant="80" id="bBU-i8-NQk"/>
-                            <constraint firstItem="Z22-ZH-7gg" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="ndj-Qi-URW"/>
-                            <constraint firstItem="T0h-o7-UyN" firstAttribute="centerY" secondItem="8Gr-Tz-vcT" secondAttribute="centerY" id="nng-Oz-93v"/>
-                            <constraint firstItem="T0h-o7-UyN" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="qVr-FF-bfx"/>
+                            <constraint firstItem="T0h-o7-UyN" firstAttribute="centerY" secondItem="8Gr-Tz-vcT" secondAttribute="centerY" id="Zbr-EM-Pp8"/>
+                            <constraint firstItem="T0h-o7-UyN" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="iaI-ki-AI8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="owe-gV-2Hy">
@@ -151,6 +156,7 @@
                         <outlet property="activityIndicator" destination="Z22-ZH-7gg" id="3iM-Td-39L"/>
                         <outlet property="pokemonImageView" destination="T0h-o7-UyN" id="bb9-Es-8PV"/>
                         <outlet property="weightLabel" destination="Q56-QB-9Hx" id="6HO-hX-6Sf"/>
+                        <outlet property="xpLabel" destination="8Hu-u9-XWP" id="iPC-3v-nfV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzA-h7-7yg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

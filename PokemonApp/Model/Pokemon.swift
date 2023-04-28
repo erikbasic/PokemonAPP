@@ -13,6 +13,6 @@ class Pokemon: PokemonBase {
   
   var spriteUrl: URL?
   var pokemonWeight: Int?
-  
+  var pokemonExp: Int?
   
 }

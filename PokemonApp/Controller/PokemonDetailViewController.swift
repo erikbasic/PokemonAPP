@@ -11,6 +11,8 @@ class PokemonDetailViewController: UIViewController {
   @IBOutlet weak var pokemonImageView: UIImageView!
   @IBOutlet weak var weightLabel: UILabel!
   
+  @IBOutlet weak var xpLabel: UILabel!
+  
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   var pokemon: PokemonBase!
@@ -44,8 +46,13 @@ class PokemonDetailViewController: UIViewController {
          let pokemonWeight = pokemon.pokemonWeight{
         // dynamic weight
         self.weightLabel.text = "Weight: \(pokemonWeight)"
-        // dynamic image
+        
       }
+      if let pokemon = pokemon,
+         let pokemonXP = pokemon.pokemonExp{
+         self.xpLabel.text = "XP: \(pokemonXP)"
+      }
+      // dynamic image
       let url = pokemon?.spriteUrl
       DispatchQueue.global().async{
         let data = try? Data(contentsOf: url!)
@@ -67,15 +74,7 @@ class PokemonDetailViewController: UIViewController {
     
   }
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
+  
   
   
   // MARK: - Selectors
