@@ -12,6 +12,7 @@ import Foundation.NSURL
 class Pokemon: PokemonBase {
   
   var spriteUrl: URL?
+  var pokemonWeight: Int?
   
   
 }

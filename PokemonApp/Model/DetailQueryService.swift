@@ -110,6 +110,7 @@ class DetailQueryService{
     let pokemon = Pokemon()
     pokemon.name = pokemonBase.name
     pokemon.spriteUrl = spriteUrl
+    pokemon.pokemonWeight = pokemonWeight
     
     return pokemon
     
