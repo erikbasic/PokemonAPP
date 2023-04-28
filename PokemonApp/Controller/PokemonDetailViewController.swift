@@ -21,7 +21,7 @@ class PokemonDetailViewController: UIViewController {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-  
+    
     title = pokemon.finalName
     favoriteButton = navigationItem.rightBarButtonItem
     if pokemon.isFavorite {
@@ -39,18 +39,27 @@ class PokemonDetailViewController: UIViewController {
       // convert pokemonweight that's in Int to String, but keep only numbers
       if let pokemon = pokemon,
          let pokemonWeight = pokemon.pokemonWeight{
+        // dynamic weight
         self.weightLabel.text = "Weight: \(pokemonWeight)"
+        // dynamic image
+      }
+      let url = pokemon?.spriteUrl
+      DispatchQueue.global().async{
+        let data = try? Data(contentsOf: url!)
+        DispatchQueue.main.async {
+          self.pokemonImageView.image = UIImage(data: data!)
+        }
       }
     }
     
-    queryService.getPokemonURL { (pokemonImage: UIImage?) in
-      if let pokemonImage = pokemonImage {
-        self.pokemonImageView.image = pokemonImage
-      }
-    }
-  
-  
-
+    //    queryService.getPokemonURL { (pokemonImage: UIImage?) in
+    //      if let pokemonImage = pokemonImage {
+    //        self.pokemonImageView.image = pokemonImage
+    //      }
+    //    }
+    
+    
+    
     
   }
   
