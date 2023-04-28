@@ -123,9 +123,8 @@
                                     <constraint firstAttribute="width" constant="300" id="MYh-5P-Lgb"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q56-QB-9Hx">
-                                <rect key="frame" x="175" y="668" width="54" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q56-QB-9Hx">
+                                <rect key="frame" x="169.66666666666666" y="668" width="53.666666666666657" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -134,6 +133,8 @@
                         <viewLayoutGuide key="safeArea" id="Tu2-du-Tbd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Q56-QB-9Hx" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="5hk-aF-SUu"/>
+                            <constraint firstItem="Tu2-du-Tbd" firstAttribute="bottom" secondItem="Q56-QB-9Hx" secondAttribute="bottom" constant="80" id="bBU-i8-NQk"/>
                             <constraint firstItem="T0h-o7-UyN" firstAttribute="centerY" secondItem="8Gr-Tz-vcT" secondAttribute="centerY" id="nng-Oz-93v"/>
                             <constraint firstItem="T0h-o7-UyN" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="qVr-FF-bfx"/>
                         </constraints>

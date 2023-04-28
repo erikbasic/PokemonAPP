@@ -36,7 +36,11 @@ class PokemonDetailViewController: UIViewController {
     
     //    Load data source for detail
     detailQuery.getPokemonDetailsFor(pokemon) { pokemon, errorString in
-      let i = 9
+      // convert pokemonweight that's in Int to String, but keep only numbers
+      if let pokemon = pokemon,
+         let pokemonWeight = pokemon.pokemonWeight{
+        self.weightLabel.text = "Weight: \(pokemonWeight)"
+      }
     }
     
     queryService.getPokemonURL { (pokemonImage: UIImage?) in
