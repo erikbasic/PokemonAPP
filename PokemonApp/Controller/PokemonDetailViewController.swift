@@ -11,6 +11,8 @@ class PokemonDetailViewController: UIViewController {
   @IBOutlet weak var pokemonImageView: UIImageView!
   @IBOutlet weak var weightLabel: UILabel!
   
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  
   var pokemon: PokemonBase!
   private var pokemonDetails = [DetailsOfPokemon]()
   private var favoriteButton: UIBarButtonItem!
@@ -34,6 +36,7 @@ class PokemonDetailViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    activityIndicator.startAnimating()
     //    Load data source for detail
     detailQuery.getPokemonDetailsFor(pokemon) { pokemon, errorString in
       // convert pokemonweight that's in Int to String, but keep only numbers
@@ -48,6 +51,7 @@ class PokemonDetailViewController: UIViewController {
         let data = try? Data(contentsOf: url!)
         DispatchQueue.main.async {
           self.pokemonImageView.image = UIImage(data: data!)
+          self.activityIndicator.stopAnimating()
         }
       }
     }

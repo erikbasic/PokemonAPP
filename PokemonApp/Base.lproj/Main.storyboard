@@ -129,12 +129,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-ZH-7gg">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tu2-du-Tbd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Q56-QB-9Hx" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="5hk-aF-SUu"/>
+                            <constraint firstItem="Z22-ZH-7gg" firstAttribute="centerY" secondItem="8Gr-Tz-vcT" secondAttribute="centerY" id="E1Q-WG-neN"/>
                             <constraint firstItem="Tu2-du-Tbd" firstAttribute="bottom" secondItem="Q56-QB-9Hx" secondAttribute="bottom" constant="80" id="bBU-i8-NQk"/>
+                            <constraint firstItem="Z22-ZH-7gg" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="ndj-Qi-URW"/>
                             <constraint firstItem="T0h-o7-UyN" firstAttribute="centerY" secondItem="8Gr-Tz-vcT" secondAttribute="centerY" id="nng-Oz-93v"/>
                             <constraint firstItem="T0h-o7-UyN" firstAttribute="centerX" secondItem="8Gr-Tz-vcT" secondAttribute="centerX" id="qVr-FF-bfx"/>
                         </constraints>
@@ -143,6 +148,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="uXM-W8-Bnb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Z22-ZH-7gg" id="3iM-Td-39L"/>
                         <outlet property="pokemonImageView" destination="T0h-o7-UyN" id="bb9-Es-8PV"/>
                         <outlet property="weightLabel" destination="Q56-QB-9Hx" id="6HO-hX-6Sf"/>
                     </connections>
