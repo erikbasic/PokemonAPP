@@ -35,6 +35,14 @@ class FavoritePokemonsViewController: UIViewController {
     } catch{
       print("Could not fetch")
     }
+    
+//    MARK: - UITableViewDataSorce
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      favoritePokemon.count
+    }
+    
+    
   }
   
 }
