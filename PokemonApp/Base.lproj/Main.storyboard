@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favorites-->
+        <!--Favorite Pokemons-->
         <scene sceneID="4vO-B8-kb0">
             <objects>
                 <viewController id="yW0-rD-Ysf" sceneMemberID="viewController">
@@ -18,11 +18,11 @@
                         <viewLayoutGuide key="safeArea" id="8Xe-jv-C8V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="bf7-n8-Y3f"/>
+                    <navigationItem key="navigationItem" title="Favorite Pokemons" id="vbm-M8-cVW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBI-yH-Oe4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-86" y="-61"/>
+            <point key="canvasLocation" x="840.45801526717548" y="-61.267605633802823"/>
         </scene>
         <!--Pokemons VC-->
         <scene sceneID="49g-iK-Wyg">
@@ -101,7 +101,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="fyV-Yy-xkE" kind="relationship" relationship="viewControllers" id="9gR-IR-aul"/>
-                        <segue destination="yW0-rD-Ysf" kind="relationship" relationship="viewControllers" id="bup-DF-tUV"/>
+                        <segue destination="dLs-cA-hoC" kind="relationship" relationship="viewControllers" id="bup-DF-tUV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbW-eQ-grk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -182,6 +182,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t91-Au-aZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-86.25954198473282" y="-747.18309859154931"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="FNA-fX-ASQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dLs-cA-hoC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" id="bf7-n8-Y3f"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fc8-VX-zE7">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yW0-rD-Ysf" kind="relationship" relationship="rootViewController" id="KMW-zo-gy3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKF-GM-tsi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-86.25954198473282" y="-61.267605633802823"/>
         </scene>
     </scenes>
     <resources>
