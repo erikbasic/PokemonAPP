@@ -50,7 +50,7 @@ class PokemonDetailViewController: UIViewController {
       }
       if let pokemon = pokemon,
          let pokemonXP = pokemon.pokemonExp{
-         self.xpLabel.text = "XP: \(pokemonXP)"
+        self.xpLabel.text = "Base XP: \(pokemonXP)"
       }
       // dynamic image
       let url = pokemon?.spriteUrl
@@ -62,20 +62,7 @@ class PokemonDetailViewController: UIViewController {
         }
       }
     }
-    
-    //    queryService.getPokemonURL { (pokemonImage: UIImage?) in
-    //      if let pokemonImage = pokemonImage {
-    //        self.pokemonImageView.image = pokemonImage
-    //      }
-    //    }
-    
-    
-    
-    
   }
-  
-  
-  
   
   // MARK: - Selectors
   
@@ -88,3 +75,4 @@ class PokemonDetailViewController: UIViewController {
     }
   }
 }
+

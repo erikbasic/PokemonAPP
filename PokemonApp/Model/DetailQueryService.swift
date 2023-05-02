@@ -90,7 +90,7 @@ class DetailQueryService{
       errorMessage += "Dictionary does not experience weight key\n"
       return nil
     }
-  
+    
     guard let spritesJson = response!["sprites"] as? JSONDictionary else {
       errorMessage += "Dictionary does not contain sprites key\n"
       return nil
@@ -111,14 +111,18 @@ class DetailQueryService{
       return nil
     }
     
-    
+    guard let pokemonID = response!["id"] as? Int else{
+      errorMessage += "Dictionaru does not containt id key"
+      return nil
+    }
     let pokemon = Pokemon()
     pokemon.name = pokemonBase.name
     pokemon.spriteUrl = spriteUrl
     pokemon.pokemonWeight = pokemonWeight
     pokemon.pokemonExp = pokemonXp
+    pokemon.pokemonID = pokemonID
     
     return pokemon
-  
+    
   }
 }

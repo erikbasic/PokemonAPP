@@ -15,6 +15,5 @@ struct DetailsOfPokemon {
 
   let detailWeight: Int
   let imageURL: URL
-  
-  
+
 }
