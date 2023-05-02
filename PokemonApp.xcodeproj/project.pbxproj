@@ -22,6 +22,7 @@
 		D5588A0729F91197006A0C2D /* FavoritePokemon+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5588A0529F91197006A0C2D /* FavoritePokemon+CoreDataClass.swift */; };
 		D5588A1129F944CE006A0C2D /* PokemonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5588A1029F944CE006A0C2D /* PokemonsViewController.swift */; };
 		D5588A1329F94DC7006A0C2D /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5588A1229F94DC7006A0C2D /* PokemonDetailViewController.swift */; };
+		D5954F462A00FE0F00C9F9B7 /* FavoritePokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5954F452A00FE0F00C9F9B7 /* FavoritePokemonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D5588A0529F91197006A0C2D /* FavoritePokemon+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritePokemon+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D5588A1029F944CE006A0C2D /* PokemonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonsViewController.swift; sourceTree = "<group>"; };
 		D5588A1229F94DC7006A0C2D /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
+		D5954F452A00FE0F00C9F9B7 /* FavoritePokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePokemonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				D546E73229F7B857000BAA7A /* Info.plist */,
 				D546E72A29F7B855000BAA7A /* PokemonApp.xcdatamodeld */,
 				D5588A0229F7F2F4006A0C2D /* PokemonCell.swift */,
+				D5954F452A00FE0F00C9F9B7 /* FavoritePokemonCell.swift */,
 			);
 			path = PokemonApp;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				D534824129F968EC00780D54 /* DetailQueryService.swift in Sources */,
 				D5588A0729F91197006A0C2D /* FavoritePokemon+CoreDataClass.swift in Sources */,
 				D546E72229F7B854000BAA7A /* AppDelegate.swift in Sources */,
+				D5954F462A00FE0F00C9F9B7 /* FavoritePokemonCell.swift in Sources */,
 				D546E72429F7B854000BAA7A /* SceneDelegate.swift in Sources */,
 				D534824329FA5C2B00780D54 /* DetailsOfPokemon.swift in Sources */,
 				D5588A0329F7F2F4006A0C2D /* PokemonCell.swift in Sources */,
