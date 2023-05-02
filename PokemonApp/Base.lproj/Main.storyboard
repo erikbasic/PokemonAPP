@@ -11,7 +11,7 @@
         <!--Favorite Pokemons-->
         <scene sceneID="4vO-B8-kb0">
             <objects>
-                <viewController id="yW0-rD-Ysf" sceneMemberID="viewController">
+                <viewController id="yW0-rD-Ysf" customClass="FavoritePokemonsViewController" customModule="PokemonApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IyP-xx-ZRN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="favoritePokemonLabel" destination="Fgh-nr-bhg" id="UM9-ui-MNy"/>
+                                            <outlet property="favPokemonLabel" destination="Fgh-nr-bhg" id="iZu-GW-uYK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -49,6 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Favorite Pokemons" id="vbm-M8-cVW"/>
                     <connections>
+                        <outlet property="tableView" destination="KZo-ox-EsT" id="Of7-wt-xks"/>
                         <segue destination="FBE-pp-8pv" kind="show" id="aGM-bn-4Vd"/>
                     </connections>
                 </viewController>

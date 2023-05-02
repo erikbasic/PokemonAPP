@@ -22,6 +22,7 @@
 		D5588A1129F944CE006A0C2D /* PokemonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5588A1029F944CE006A0C2D /* PokemonsViewController.swift */; };
 		D5588A1329F94DC7006A0C2D /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5588A1229F94DC7006A0C2D /* PokemonDetailViewController.swift */; };
 		D5954F462A00FE0F00C9F9B7 /* FavoritePokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5954F452A00FE0F00C9F9B7 /* FavoritePokemonCell.swift */; };
+		D5954F4A2A013DE300C9F9B7 /* FavoritePokemonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5954F492A013DE300C9F9B7 /* FavoritePokemonsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D5588A1029F944CE006A0C2D /* PokemonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonsViewController.swift; sourceTree = "<group>"; };
 		D5588A1229F94DC7006A0C2D /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		D5954F452A00FE0F00C9F9B7 /* FavoritePokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePokemonCell.swift; sourceTree = "<group>"; };
+		D5954F492A013DE300C9F9B7 /* FavoritePokemonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePokemonsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				D5588A1029F944CE006A0C2D /* PokemonsViewController.swift */,
 				D5588A1229F94DC7006A0C2D /* PokemonDetailViewController.swift */,
+				D5954F492A013DE300C9F9B7 /* FavoritePokemonsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				D5588A1129F944CE006A0C2D /* PokemonsViewController.swift in Sources */,
 				D534824129F968EC00780D54 /* DetailQueryService.swift in Sources */,
 				D5588A0729F91197006A0C2D /* FavoritePokemon+CoreDataClass.swift in Sources */,
+				D5954F4A2A013DE300C9F9B7 /* FavoritePokemonsViewController.swift in Sources */,
 				D546E72229F7B854000BAA7A /* AppDelegate.swift in Sources */,
 				D5954F462A00FE0F00C9F9B7 /* FavoritePokemonCell.swift in Sources */,
 				D546E72429F7B854000BAA7A /* SceneDelegate.swift in Sources */,

@@ -15,9 +15,10 @@ class FavoritePokemonCell: UITableViewCell{
   static let identifier = "FavoritePokemonCell"
   
 //  MARK: - IBOutlets
-  @IBOutlet weak var favoritePokemonLabel: UILabel!
+
+  @IBOutlet weak var favPokemonLabel: UILabel!
   
   func configure(favoritePokemon: Pokemon){
-    favoritePokemonLabel.text = favoritePokemon.name
+    favPokemonLabel.text = favoritePokemon.name
   }
 }
