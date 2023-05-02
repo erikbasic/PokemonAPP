@@ -8,16 +8,254 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F4980EF6-E768-48A0-90A6-DBC3E29DD061"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PokemonApp/Model/DetailQueryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "parsePokemonDetailsJsonFromData(_:pokemonBase:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F4980EF6-E768-48A0-90A6-DBC3E29DD061 - 561af8de2f58d1ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonApp.DetailQueryService.parsePokemonDetailsJsonFromData(_: Foundation.Data, pokemonBase: PokemonApp.PokemonBase) -&gt; Swift.Optional&lt;PokemonApp.Pokemon&gt;"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Model/DetailQueryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "5369">
+               </Location>
+               <Location
+                  uuid = "F4980EF6-E768-48A0-90A6-DBC3E29DD061 - 561af8de2f58d05b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonApp.DetailQueryService.parsePokemonDetailsJsonFromData(_: Foundation.Data, pokemonBase: PokemonApp.PokemonBase) -&gt; Swift.Optional&lt;PokemonApp.Pokemon&gt;"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Model/DetailQueryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "3908">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86D1067F-87AF-4CF3-AF1F-FC71EF8C84EF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokemonApp/Controller/PokemonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "toggleFavorite(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "27969CF8-B30D-486E-ACD4-2779429F855C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokemonApp/Controller/PokemonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "toggleFavorite(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CBECAA3C-46F0-4963-9B9E-4A7019F653FD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokemonApp/Controller/PokemonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "toggleFavorite(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CBECAA3C-46F0-4963-9B9E-4A7019F653FD - 41ef7d76bd162e0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "81">
+               </Location>
+               <Location
+                  uuid = "CBECAA3C-46F0-4963-9B9E-4A7019F653FD - 41ef7d76bd162e2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "81">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9404A734-6367-4867-B228-1E6BE363405A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokemonApp/Controller/PokemonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "toggleFavorite(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9404A734-6367-4867-B228-1E6BE363405A - 41ef7d76bd162934"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "799">
+               </Location>
+               <Location
+                  uuid = "9404A734-6367-4867-B228-1E6BE363405A - 273b0fb2197c4a9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;PokemonApp.Pokemon&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  uuid = "9404A734-6367-4867-B228-1E6BE363405A - 273b0fb2197c4ac0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;PokemonApp.Pokemon&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "9404A734-6367-4867-B228-1E6BE363405A - 273b0fb2197c4a9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;PokemonApp.Pokemon&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "125">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A5D70D86-B6E1-42C1-868C-7680384DDCF3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokemonApp/Controller/PokemonDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "toggleFavorite(sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A5D70D86-B6E1-42C1-868C-7680384DDCF3 - 273b0fb2197c4ac0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;PokemonApp.Pokemon&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "A5D70D86-B6E1-42C1-868C-7680384DDCF3 - 273b0fb2197c4ac0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;PokemonApp.Pokemon&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in PokemonApp.PokemonDetailViewController.toggleFavorite(sender: __C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "PokemonApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erikbasic/Documents/PokemonAPP/PokemonApp/Controller/PokemonDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "1837">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DetailQueryService{
   
@@ -19,11 +20,9 @@ class DetailQueryService{
   
   var dataTask: URLSessionDataTask?
   var errorMessage = ""
-  var pokemonsDetails: [DetailsOfPokemon] = []
   
   //  MARK: - Type Alias
   typealias JSONDictionary = [String: Any]
-  typealias DetailQueryResult = ([DetailsOfPokemon]?, String) -> Void
   
   
   //  MARK: - Methods
@@ -72,7 +71,6 @@ class DetailQueryService{
   private func parsePokemonDetailsJsonFromData(_ data: Data, pokemonBase: PokemonBase) -> Pokemon? {
     
     var response: JSONDictionary?
-    pokemonsDetails.removeAll()
     
     do {
       response = try JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary
@@ -116,13 +114,16 @@ class DetailQueryService{
       return nil
     }
     let pokemon = Pokemon()
-    pokemon.name = pokemonBase.name
+    pokemon.name = pokemonBase.finalName
     pokemon.spriteUrl = spriteUrl
     pokemon.pokemonWeight = pokemonWeight
     pokemon.pokemonExp = pokemonXp
     pokemon.pokemonID = pokemonID
     
+    
     return pokemon
     
   }
+  
+
 }
