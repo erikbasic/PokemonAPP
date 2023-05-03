@@ -8,7 +8,7 @@
 import UIKit
 
 class PokemonsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PokemonCellDelegate {
-
+  
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   private var pokemons = [PokemonBase]()
@@ -18,7 +18,6 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +74,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   
   
   // MARK: - PokemonCellDelegate
-
+  
   func addTapped(_ cell: PokemonCell) {
     
   }

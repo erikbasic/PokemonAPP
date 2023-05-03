@@ -19,4 +19,13 @@ public class FavoritePokemon: NSManagedObject {
   var pokemonWeightCoreData: Int?
   var pokemonExpCoreData: Int?
   var isFavoriteCoreData: Bool?
+  
+  func getPokemonWithId(_ pokemonId: Int64, context: NSManagedObjectContext) {
+    do {
+      let fetchRequest = FavoritePokemon.fetchRequest()
+      let pokemons = try context.fetch(fetchRequest)
+    } catch {
+      debugPrint(error)
+    }
+  }
 }

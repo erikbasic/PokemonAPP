@@ -82,16 +82,20 @@ class PokemonDetailViewController: UIViewController {
     //    case 2: isFavorite TRUE - pokemon.isFavorite TRUE
     //            isFavorite TRUE - pokemon.isFavorite FALSE
     
+    // Try to get this pokemon from CoreData
+    // and check if favorite
     
     let isFavorite = pokemon.isFavorite
+    
+    
     pokemon.isFavorite = !isFavorite
     // realizirati upis, tj brisanje podataka
     if pokemon.isFavorite == true{
       print("Upis")
       detailQuery.getPokemonDetailsFor(pokemon) { pokemon, errorString in
-        self.saveToCoreData(favID: pokemon!.pokemonID!, favWeight: pokemon!.pokemonWeight!, favURL: pokemon!.spriteUrl!, favName: pokemon!.finalName, favExp: pokemon!.pokemonExp!, isFav: pokemon!.isFavorite)
+        self.savePokemon(pokemonId: Int64(pokemon!.pokemonID!), weight: Int64(pokemon!.pokemonWeight!), url: pokemon!.spriteUrl!, name: pokemon!.finalName, exp: Int64(pokemon!.pokemonExp!), isFavorite: pokemon!.isFavorite)
       }
-      }else{
+    }else{
       print("Brisanje")
     }
     favoriteButton.image = UIImage(systemName: "star")
@@ -100,14 +104,23 @@ class PokemonDetailViewController: UIViewController {
     }
   }
   
-  func saveToCoreData(favID: Int, favWeight: Int, favURL: URL, favName: String, favExp: Int, isFav: Bool){
+  func savePokemon(pokemonId: Int64, weight: Int64, url: URL, name: String, exp: Int64, isFavorite: Bool){
     guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else{
       return
     }
     
-    let managedContext = appDelegate.persistentContainer.viewContext
+    let context = appDelegate.persistentContainer.viewContext
     
+    let newFavoritePokemon = FavoritePokemon(context: context)
+    newFavoritePokemon.pokemonID = pokemonId
+    newFavoritePokemon.pokemonName = name
+    newFavoritePokemon.isFavorite = isFavorite
+    newFavoritePokemon.pokemonExp = exp
+    newFavoritePokemon.pokemonWeight = weight
+    newFavoritePokemon.spriteURL = url
+    
+    /*
     let entity = NSEntityDescription.entity(forEntityName: "FavoritePokemon", in: managedContext)!
     
     let favoritePokemon = NSManagedObject (entity: entity, insertInto: managedContext)
@@ -119,12 +132,13 @@ class PokemonDetailViewController: UIViewController {
     favoritePokemon.setValue(favExp, forKey: "pokemonExp")
     favoritePokemon.setValue(isFav, forKey: "isFavorite")
     
+    */
     
     do{
-      try managedContext.save()
-      favoritePokemons.append(favoritePokemon)
-    } catch{
-      print("Could not save.")
+      try context.save()
+      favoritePokemons.append(newFavoritePokemon)
+    } catch {
+      debugPrint(error)
     }
   }
 }

@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="88" id="IEX-Lx-VWx" customClass="FavoritePokemonCell" customModule="PokemonApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FavoritePokemonCell" rowHeight="88" id="IEX-Lx-VWx" customClass="FavoritePokemonCell" customModule="PokemonApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IEX-Lx-VWx" id="Oss-S0-GJ0">
@@ -42,6 +42,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="yW0-rD-Ysf" id="PUN-y5-X7H"/>
+                                    <outlet property="delegate" destination="yW0-rD-Ysf" id="rcr-Ud-tvr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Xe-jv-C8V"/>
@@ -114,7 +118,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="K5N-g1-XMI" id="aPe-AG-dcp"/>
+                                    <outlet property="dataSource" destination="K5N-g1-XMI" id="ly1-jO-zBF"/>
                                     <outlet property="delegate" destination="K5N-g1-XMI" id="Tgt-ae-93e"/>
                                 </connections>
                             </tableView>

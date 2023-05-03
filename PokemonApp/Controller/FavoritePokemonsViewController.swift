@@ -1,25 +1,20 @@
-//
-//  FavoritePokemonsViewController.swift
-//  PokemonApp
-//
-//  Created by Erik Basic on 02.05.2023..
-//
-
 import UIKit
 import CoreData
 
-class FavoritePokemonsViewController: UIViewController {
-
+class FavoritePokemonsViewController: UIViewController, UITableViewDataSource {
   
-//  MARK: - Outlets
+  
+  //  MARK: - Outlets
   @IBOutlet weak var tableView: UITableView!
   
+  
   var favoritePokemon: [NSManagedObject] = []
+  private var favoritePokemons = [FavoritePokemon]()
   
   override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    super.viewDidLoad()
+  }
+  
   override func viewWillAppear(_ animated: Bool) {
     
     guard let appDelegate =
@@ -35,14 +30,18 @@ class FavoritePokemonsViewController: UIViewController {
     } catch{
       print("Could not fetch")
     }
-    
-//    MARK: - UITableViewDataSorce
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      favoritePokemon.count
-    }
-    
-    
   }
   
+  //    MARK: - UITableViewDataSorce
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    favoritePokemon.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritePokemonCell", for: indexPath) as! FavoritePokemonCell
+    let pokemon = favoritePokemons[indexPath.row]
+    cell.favPokemonLabel.text = pokemon.pokemonName
+    return cell
+  }
 }
