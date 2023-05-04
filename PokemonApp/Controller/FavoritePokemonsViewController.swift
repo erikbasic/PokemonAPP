@@ -8,8 +8,7 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource {
   @IBOutlet weak var tableView: UITableView!
   
   
-  var favoritePokemon: [NSManagedObject] = []
-  private var favoritePokemons = [FavoritePokemon]()
+  var favoritePokemons: [NSManagedObject] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,7 +25,7 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource {
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoritePokemon")
     
     do{
-      favoritePokemon = try managedContext.fetch(fetchRequest)
+      favoritePokemons = try managedContext.fetch(fetchRequest)
     } catch{
       print("Could not fetch")
     }
@@ -35,13 +34,13 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource {
   //    MARK: - UITableViewDataSorce
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    favoritePokemon.count
+    favoritePokemons.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritePokemonCell", for: indexPath) as! FavoritePokemonCell
     let pokemon = favoritePokemons[indexPath.row]
-    cell.favPokemonLabel.text = pokemon.pokemonName
+    cell.favPokemonLabel.text = String(indexPath.row)
     return cell
   }
 }

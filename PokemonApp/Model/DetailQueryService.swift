@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class DetailQueryService{
+class DetailQueryService {
   
   // MARK: - Constants
   
@@ -53,9 +53,8 @@ class DetailQueryService{
           response.statusCode == 200
         {
           // OK
-          let pokemon = self?.parsePokemonDetailsJsonFromData(data, pokemonBase: pokemonBase)
-          
           DispatchQueue.main.async {
+            let pokemon = self?.parsePokemonDetailsJsonFromData(data, pokemonBase: pokemonBase)
             completion(pokemon, nil)
           }
         } else {
@@ -109,7 +108,7 @@ class DetailQueryService{
       return nil
     }
     
-    guard let pokemonID = response!["id"] as? Int else{
+    guard let pokemonID = response!["id"] as? Int64 else {
       errorMessage += "Dictionaru does not containt id key"
       return nil
     }
@@ -120,10 +119,14 @@ class DetailQueryService{
     pokemon.pokemonExp = pokemonXp
     pokemon.pokemonID = pokemonID
     
+    // Check if the pokemon is already saved in CoreData,
+    // which means it's a favorite pokemon
+    if let _ = FavoritePokemon.getPokemonWithId(pokemonID) {
+      pokemon.isFavorite = true
+    }
+    
     
     return pokemon
-    
   }
   
-
 }

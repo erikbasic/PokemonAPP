@@ -84,7 +84,6 @@
 				D546E72D29F7B857000BAA7A /* Assets.xcassets */,
 				D546E72F29F7B857000BAA7A /* LaunchScreen.storyboard */,
 				D546E73229F7B857000BAA7A /* Info.plist */,
-				D546E72A29F7B855000BAA7A /* PokemonApp.xcdatamodeld */,
 				D5588A0229F7F2F4006A0C2D /* PokemonCell.swift */,
 				D5954F452A00FE0F00C9F9B7 /* FavoritePokemonCell.swift */,
 			);
@@ -94,6 +93,7 @@
 		D5588A0429F90FB2006A0C2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D546E72A29F7B855000BAA7A /* PokemonApp.xcdatamodeld */,
 				D546E73C29F7D05E000BAA7A /* Pokemon.swift */,
 				D534824429FAAE3300780D54 /* BasePokemon.swift */,
 				D5588A0529F91197006A0C2D /* FavoritePokemon+CoreDataClass.swift */,

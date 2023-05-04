@@ -47,7 +47,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     // Pass the selected object to the new view controller.
     
     let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
-    pokemonDetailViewController.pokemon = selectedPokemon
+    pokemonDetailViewController.basePokemon = selectedPokemon
   }
   
   

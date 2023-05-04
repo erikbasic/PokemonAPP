@@ -16,23 +16,19 @@ class PokemonDetailViewController: UIViewController {
   
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
-  var pokemon: PokemonBase!
-  var pokemonDetails: Pokemon!
+  var basePokemon: PokemonBase!
+  private var pokemon: Pokemon!
   private var favoriteButton: UIBarButtonItem!
   private let queryService = QueryService()
   private let detailQuery = DetailQueryService()
-  var favoritePokemons: [NSManagedObject] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
     
-    title = pokemon.finalName
+    title = basePokemon.finalName
     favoriteButton = navigationItem.rightBarButtonItem
-    if pokemon.isFavorite {
-      favoriteButton.image = UIImage.init(systemName: "star.fill")
-    }
     favoriteButton.target = self
     favoriteButton.action = #selector(toggleFavorite(sender:))
   }
@@ -42,19 +38,23 @@ class PokemonDetailViewController: UIViewController {
     
     activityIndicator.startAnimating()
     //    Load data source for detail
-    detailQuery.getPokemonDetailsFor(pokemon) { pokemon, errorString in
-      if let pokemon = pokemon,
-         let pokemonWeight = pokemon.pokemonWeight{
+    detailQuery.getPokemonDetailsFor(basePokemon) { pokemon, errorString in
+      guard let pokemon = pokemon else {
+        return
+      }
+      if let pokemonWeight = pokemon.pokemonWeight {
         // dynamic weight
         self.weightLabel.text = "Weight: \(pokemonWeight)"
         
       }
-      if let pokemon = pokemon,
-         let pokemonXP = pokemon.pokemonExp{
+      if let pokemonXP = pokemon.pokemonExp {
         self.xpLabel.text = "Base XP: \(pokemonXP)"
       }
+      
+      self.updateFavoriteButtonImageForPokemon(pokemon)
+      
       // dynamic image
-      let url = pokemon?.spriteUrl
+      let url = pokemon.spriteUrl
       DispatchQueue.global().async{
         let data = try? Data(contentsOf: url!)
         DispatchQueue.main.async {
@@ -62,6 +62,8 @@ class PokemonDetailViewController: UIViewController {
           self.activityIndicator.stopAnimating()
         }
       }
+      
+      self.pokemon = pokemon
     }
   }
   
@@ -85,60 +87,41 @@ class PokemonDetailViewController: UIViewController {
     // Try to get this pokemon from CoreData
     // and check if favorite
     
+    guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+      return
+    }
+    
     let isFavorite = pokemon.isFavorite
     
     
     pokemon.isFavorite = !isFavorite
     // realizirati upis, tj brisanje podataka
-    if pokemon.isFavorite == true{
-      print("Upis")
-      detailQuery.getPokemonDetailsFor(pokemon) { pokemon, errorString in
-        self.savePokemon(pokemonId: Int64(pokemon!.pokemonID!), weight: Int64(pokemon!.pokemonWeight!), url: pokemon!.spriteUrl!, name: pokemon!.finalName, exp: Int64(pokemon!.pokemonExp!), isFavorite: pokemon!.isFavorite)
+    if pokemon.isFavorite == true {
+      // Save pokemon to CoreData
+      do {
+        try FavoritePokemon.savePokemon(id: pokemon.pokemonID, name: pokemon.finalName, spriteURL: pokemon.spriteUrl, context: context)
+      } catch {
+        debugPrint(error)
       }
-    }else{
+    } else {
+      // Remove pokemon from CoreData
       print("Brisanje")
+      do {
+        try FavoritePokemon.removePokemon(id: pokemon.pokemonID, context: context)
+      } catch {
+        debugPrint(error)
+      }
     }
-    favoriteButton.image = UIImage(systemName: "star")
-    if pokemon.isFavorite {
-      favoriteButton.image = UIImage(systemName: "star.fill")
-    }
+    
+    // Update UI
+    updateFavoriteButtonImageForPokemon(pokemon)
   }
   
-  func savePokemon(pokemonId: Int64, weight: Int64, url: URL, name: String, exp: Int64, isFavorite: Bool){
-    guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else{
-      return
-    }
-    
-    let context = appDelegate.persistentContainer.viewContext
-    
-    let newFavoritePokemon = FavoritePokemon(context: context)
-    newFavoritePokemon.pokemonID = pokemonId
-    newFavoritePokemon.pokemonName = name
-    newFavoritePokemon.isFavorite = isFavorite
-    newFavoritePokemon.pokemonExp = exp
-    newFavoritePokemon.pokemonWeight = weight
-    newFavoritePokemon.spriteURL = url
-    
-    /*
-    let entity = NSEntityDescription.entity(forEntityName: "FavoritePokemon", in: managedContext)!
-    
-    let favoritePokemon = NSManagedObject (entity: entity, insertInto: managedContext)
-    
-    favoritePokemon.setValue(favID, forKey: "pokemonID")
-    favoritePokemon.setValue(favWeight, forKey: "pokemonWeight")
-    favoritePokemon.setValue(favURL, forKey: "spriteURL")
-    favoritePokemon.setValue(favName, forKey: "pokemonName")
-    favoritePokemon.setValue(favExp, forKey: "pokemonExp")
-    favoritePokemon.setValue(isFav, forKey: "isFavorite")
-    
-    */
-    
-    do{
-      try context.save()
-      favoritePokemons.append(newFavoritePokemon)
-    } catch {
-      debugPrint(error)
+  private func updateFavoriteButtonImageForPokemon(_ pokemon: Pokemon) {
+    if pokemon.isFavorite {
+      favoriteButton.image = UIImage.init(systemName: "star.fill")
+    } else {
+      favoriteButton.image = UIImage.init(systemName: "star")
     }
   }
 }
