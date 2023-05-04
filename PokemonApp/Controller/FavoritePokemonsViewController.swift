@@ -1,37 +1,28 @@
 import UIKit
 import CoreData
 
-class FavoritePokemonsViewController: UIViewController, UITableViewDataSource {
-  
+class FavoritePokemonsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   //  MARK: - Outlets
   @IBOutlet weak var tableView: UITableView!
   
-  
-  var favoritePokemons: [NSManagedObject] = []
-  
+  var favoritePokemons: [FavoritePokemon] = []
+  private var selectedPokemon: FavoritePokemon?
+
   override func viewDidLoad() {
     super.viewDidLoad()
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
-    guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else{
-      return
-    }
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoritePokemon")
-    
-    do{
-      favoritePokemons = try managedContext.fetch(fetchRequest)
-    } catch{
-      print("Could not fetch")
-    }
+    let favoritePokemons = FavoritePokemon.getAllPokemons()
+    self.favoritePokemons = favoritePokemons
+    tableView.reloadData()
   }
   
-  //    MARK: - UITableViewDataSorce
+  
+  // MARK: - UITableViewDataSource
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     favoritePokemons.count
@@ -40,7 +31,44 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritePokemonCell", for: indexPath) as! FavoritePokemonCell
     let pokemon = favoritePokemons[indexPath.row]
-    cell.favPokemonLabel.text = String(indexPath.row)
+    cell.favPokemonLabel.text = pokemon.basePokemon.finalName
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+        return
+      }
+      let pokemon = favoritePokemons[indexPath.row]
+      do {
+        try FavoritePokemon.removePokemon(id: pokemon.pokemonID, context: context)
+        favoritePokemons.remove(at: indexPath.row)
+//        tableView.reloadRows(at: [indexPath], with: .bottom)
+        tableView.reloadData()
+
+      } catch {
+        debugPrint(error)
+      }
+    }
+  }
+
+  
+  // MARK: UITableViewDelegate
+  
+  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    selectedPokemon = favoritePokemons[indexPath.row]
+    return indexPath
+  }
+  
+  
+  // MARK: - Navigation
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showDetailsFromFavorites" {
+      let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
+      pokemonDetailViewController.basePokemon = selectedPokemon!.basePokemon
+    }
+  }
+  
 }

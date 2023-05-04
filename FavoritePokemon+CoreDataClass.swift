@@ -13,6 +13,15 @@ import UIKit
 @objc(FavoritePokemon)
 public class FavoritePokemon: NSManagedObject {
   
+  var basePokemon: PokemonBase {
+    let basePokemon = PokemonBase()
+    basePokemon.name = pokemonName
+    basePokemon.pokemonURL = spriteURL
+    basePokemon.isFavorite = isFavorite
+    
+    return basePokemon
+  }
+  
   static func getAllPokemons(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext) -> [FavoritePokemon] {
     do{
       let fetchRequest = FavoritePokemon.fetchRequest()

@@ -39,6 +39,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favPokemonLabel" destination="Fgh-nr-bhg" id="iZu-GW-uYK"/>
+                                            <segue destination="lPi-J0-gl2" kind="show" identifier="showDetailsFromFavorites" id="7Xc-jW-CNC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -54,28 +55,11 @@
                     <navigationItem key="navigationItem" title="Favorite Pokemons" id="vbm-M8-cVW"/>
                     <connections>
                         <outlet property="tableView" destination="KZo-ox-EsT" id="Of7-wt-xks"/>
-                        <segue destination="FBE-pp-8pv" kind="show" id="aGM-bn-4Vd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBI-yH-Oe4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="840.45801526717548" y="-61.267605633802823"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="LFv-AW-SeA">
-            <objects>
-                <viewController id="FBE-pp-8pv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zhK-y3-te4">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ne3-FK-lUp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="fQC-HG-xNu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7lE-Jd-2MQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1911" y="-61"/>
         </scene>
         <!--Pokemons VC-->
         <scene sceneID="49g-iK-Wyg">
@@ -113,7 +97,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="pokemonLabel" destination="c3f-mT-Tnc" id="vVf-Jv-d3q"/>
-                                            <segue destination="lPi-J0-gl2" kind="show" id="ENq-K5-5aj"/>
+                                            <segue destination="lPi-J0-gl2" kind="show" identifier="showDetailsFromPokemons" id="ENq-K5-5aj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -214,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzA-h7-7yg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881.679389312977" y="-747.18309859154931"/>
+            <point key="canvasLocation" x="1885" y="-392"/>
         </scene>
         <!--Pokemons-->
         <scene sceneID="oIp-1d-ws8">
@@ -257,6 +241,9 @@
             <point key="canvasLocation" x="-86.25954198473282" y="-61.267605633802823"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Xc-jW-CNC"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">

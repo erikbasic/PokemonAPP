@@ -99,7 +99,7 @@ class PokemonDetailViewController: UIViewController {
     if pokemon.isFavorite == true {
       // Save pokemon to CoreData
       do {
-        try FavoritePokemon.savePokemon(id: pokemon.pokemonID, name: pokemon.finalName, spriteURL: pokemon.spriteUrl, context: context)
+        try FavoritePokemon.savePokemon(id: pokemon.pokemonID, name: pokemon.name, spriteURL: pokemon.spriteUrl, context: context)
       } catch {
         debugPrint(error)
       }

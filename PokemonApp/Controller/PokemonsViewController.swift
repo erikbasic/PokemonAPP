@@ -64,7 +64,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     return cell
   }
   
-  
+
   // MARK: - UITableViewDelegate
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
