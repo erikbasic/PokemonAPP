@@ -37,7 +37,7 @@ class QueryService {
   func getPokemons(completion: @escaping ([PokemonBase], String) -> ()) {
     dataTask?.cancel()
     
-    if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/") {
+    if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0") {
       guard let url = urlComponents.url else {
         return
       }

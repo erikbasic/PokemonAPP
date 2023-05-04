@@ -28,15 +28,12 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // Load data source
     queryService.getPokemons { (pokemons: [PokemonBase], error: String) in
-      self.pokemons = pokemons
+      self.pokemons = pokemons.sorted()
       self.tableView.reloadData()
       
       // Stop activity indicator
       self.activityIndicator.stopAnimating()
     }
-    
-
-    
   }
   
   // MARK: - Navigation

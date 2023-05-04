@@ -9,19 +9,25 @@ import Foundation.NSURL
 
 // MARK: - Track
 
-class PokemonBase {
+class PokemonBase: Comparable {
   
-  //  MARK: - Constants
+  // MARK: - Constants
   var name: String!
   
   var finalName: String {
     self.name.capitalized
   }
   
-  //  MARK: - Variables and Properties
+  // MARK: - Variables and Properties
   var isFavorite = false
   var pokemonURL: URL?
   
- 
+  // MARK: - Comparable and Equatable methods
+  static func < (lhs: PokemonBase, rhs: PokemonBase) -> Bool {
+    lhs.name < rhs.name
+  }
+  static func == (lhs: PokemonBase, rhs: PokemonBase) -> Bool {
+    lhs.name == rhs.name
+  }
     
 }

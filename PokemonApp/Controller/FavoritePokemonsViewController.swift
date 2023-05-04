@@ -44,13 +44,14 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource, U
       do {
         try FavoritePokemon.removePokemon(id: pokemon.pokemonID, context: context)
         favoritePokemons.remove(at: indexPath.row)
-//        tableView.reloadRows(at: [indexPath], with: .bottom)
-        tableView.reloadData()
-
       } catch {
         debugPrint(error)
       }
     }
+  }
+  
+  func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+    tableView.deleteRows(at: [indexPath!], with: .middle)
   }
 
   
