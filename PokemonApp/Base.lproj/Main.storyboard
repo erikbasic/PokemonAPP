@@ -73,9 +73,17 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="Ke9-Kk-VVh">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="K5N-g1-XMI" id="fzR-oF-ab4"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PokemonCell" rowHeight="107" id="7rU-6o-4SU" customClass="PokemonCell" customModule="PokemonApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="107"/>
+                                        <rect key="frame" x="0.0" y="94" width="393" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7rU-6o-4SU" id="0DJ-E8-8bG">
                                             <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="107"/>
@@ -120,6 +128,7 @@
                     <navigationItem key="navigationItem" title="Select Pokemon" id="Yeu-A6-Daq"/>
                     <connections>
                         <outlet property="activityIndicator" destination="rLI-Sk-vjp" id="EVi-85-4tn"/>
+                        <outlet property="searchBar" destination="Ke9-Kk-VVh" id="aFo-jB-Nl3"/>
                         <outlet property="tableView" destination="Z9M-o4-sB5" id="c6E-3U-taU"/>
                     </connections>
                 </viewController>
@@ -242,7 +251,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Xc-jW-CNC"/>
+        <segue reference="ENq-K5-5aj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>

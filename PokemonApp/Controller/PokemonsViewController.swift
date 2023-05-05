@@ -7,17 +7,24 @@
 
 import UIKit
 
-class PokemonsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PokemonCellDelegate {
+class PokemonsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate,PokemonCellDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet weak var searchBar: UISearchBar!
   private var pokemons = [PokemonBase]()
   private var selectedPokemon: PokemonBase?
   private let queryService = QueryService()
+  private var filteredPokemons = [PokemonBase]()
+  
+  
+  // MARK: - View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    tableView.dataSource = self
+    searchBar.delegate = self
+ 
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -29,12 +36,14 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     // Load data source
     queryService.getPokemons { (pokemons: [PokemonBase], error: String) in
       self.pokemons = pokemons.sorted()
+      self.filteredPokemons = pokemons
       self.tableView.reloadData()
       
       // Stop activity indicator
       self.activityIndicator.stopAnimating()
     }
   }
+  
   
   // MARK: - Navigation
   
@@ -51,17 +60,17 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   // MARK: - UITableViewDataSource
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    pokemons.count
+    filteredPokemons.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
-    let pokemon = pokemons[indexPath.row]
+    let pokemon = filteredPokemons[indexPath.row]
     cell.pokemonLabel.text = pokemon.finalName
     return cell
   }
   
-
+  
   // MARK: - UITableViewDelegate
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -76,4 +85,36 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     
   }
   
+  
+  //  MARK: - Search Bar Function
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    let filteredPokemons = searchText.isEmpty ? pokemons : pokemons.filter({ pokemon in
+      let range = pokemon.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil)
+      if range != nil {
+        return true
+      } else {
+        return false
+      }
+    }).sorted(by: { lhs, rhs in
+      let lhsFirtLetter = String(lhs.name.first!)
+      let rhsFirtLetter = String(rhs.name.first!)
+      return lhsFirtLetter == searchText.first!.lowercased() && rhsFirtLetter != searchText.first!.lowercased()//c || lhsFirtLetter < rhsFirtLetter
+    })
+    self.filteredPokemons = filteredPokemons
+    tableView.reloadData()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+  
+  }
+  
 }
+
+// MARK: -
+
+// Pickup name from search bar
+// apply filter to pokemon array
+// show pokemons that match the filter
+
+
