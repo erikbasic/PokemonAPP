@@ -37,7 +37,6 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
       self.pokemons = pokemons.sorted()
       self.filteredPokemons = pokemons
       self.tableView.reloadData()
-      
       // Stop activity indicator
       self.activityIndicator.stopAnimating()
     }
@@ -73,7 +72,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   // MARK: - UITableViewDelegate
   
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    selectedPokemon = pokemons[indexPath.row]
+    selectedPokemon = filteredPokemons[indexPath.row]
     return indexPath
   }
   
@@ -98,7 +97,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     }).sorted(by: { lhs, rhs in
       let lhsFirtLetter = String(lhs.name.prefix(searchText.count))
       let rhsFirtLetter = String(rhs.name.prefix(searchText.count))
-      return lhsFirtLetter == searchText.prefix(searchText.count).lowercased() && rhsFirtLetter != searchText.prefix(searchText.count).lowercased()//c || lhsFirtLetter < rhsFirtLetter
+      return lhsFirtLetter == searchText.prefix(searchText.count).lowercased() && rhsFirtLetter != searchText.first!.lowercased()//c || lhsFirtLetter < rhsFirtLetter
     })
     self.filteredPokemons = filteredPokemons
     tableView.reloadData()
