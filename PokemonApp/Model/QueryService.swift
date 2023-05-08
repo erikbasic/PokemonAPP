@@ -66,15 +66,6 @@ class QueryService {
   }
   
   
-  func getPokemonURL(completion: @escaping (UIImage?) -> ()) {
- 
-  }
-   
-  func getPokemonImageFromUrl(_ url: URL, completin: @escaping (UIImage?) -> ()) {
-    
-  }
-  
-  
   // MARK: - Private Methods
   
   private func parsePokemonJsonFromData(_ data: Data) {

@@ -24,7 +24,6 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     super.viewDidLoad()
     tableView.dataSource = self
     searchBar.delegate = self
- 
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -97,17 +96,20 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
         return false
       }
     }).sorted(by: { lhs, rhs in
-      let lhsFirtLetter = String(lhs.name.first!)
-      let rhsFirtLetter = String(rhs.name.first!)
-      return lhsFirtLetter == searchText.first!.lowercased() && rhsFirtLetter != searchText.first!.lowercased()//c || lhsFirtLetter < rhsFirtLetter
+      let lhsFirtLetter = String(lhs.name.prefix(searchText.count))
+      let rhsFirtLetter = String(rhs.name.prefix(searchText.count))
+      return lhsFirtLetter == searchText.prefix(searchText.count).lowercased() && rhsFirtLetter != searchText.prefix(searchText.count).lowercased()//c || lhsFirtLetter < rhsFirtLetter
     })
     self.filteredPokemons = filteredPokemons
     tableView.reloadData()
   }
+  // search text == "j"
+  // find all Pokemons that contain "j" anywhere
+  // if first letter of pokemon is "j" put it in front of every other pokemon
   
-  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-  
-  }
+  // search text == "ce"
+  // find all Pokemons that contain "ce" anywhere
+  // if first two letter of pokemon are "ce" put it in front of every other one, even "ca"
   
 }
 
