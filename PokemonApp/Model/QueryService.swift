@@ -25,7 +25,7 @@ class QueryService {
   
   var dataTask: URLSessionDataTask?
   var errorMessage = ""
-  var pokemons: [PokemonBase] = []
+  var pokemons: [Pokemon] = []
   
   //  MARK: - Type Alias
   typealias JSONDictionary = [String: Any]
@@ -34,7 +34,7 @@ class QueryService {
   
   //  MARK: - Methods
   
-  func getPokemons(completion: @escaping ([PokemonBase], String) -> ()) {
+  func getPokemons(completion: @escaping ([Pokemon], String) -> ()) {
     dataTask?.cancel()
     
     if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0") {
@@ -94,7 +94,7 @@ class QueryService {
         let pokemonDictionary = pokemonDictionary as? JSONDictionary, // provjera je li ovo json dictionary
         let pokemonName = pokemonDictionary["name"] as? String
       {
-        let pokemon = PokemonBase()
+        var pokemon = Pokemon()
         pokemon.name = pokemonName
         pokemons.append(pokemon)
       } else {

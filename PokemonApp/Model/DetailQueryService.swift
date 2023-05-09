@@ -19,7 +19,6 @@ class DetailQueryService {
   //  MARK: - Variables And Properties
   
   var dataTask: URLSessionDataTask?
-  var errorMessage = ""
   
   //  MARK: - Type Alias
   typealias JSONDictionary = [String: Any]
@@ -28,12 +27,14 @@ class DetailQueryService {
   //  MARK: - Methods
   
   // trebam nekako dohvatiti pokemon name
-  func getPokemonDetailsFor(_ pokemonBase: PokemonBase, completion: @escaping (Pokemon?, String?) -> ()) {
+  func getPokemonDetailsFor(_ pokemon: Pokemon, completion: @escaping (PokemonDetails?, Error?) -> ()) {
     dataTask?.cancel()
     
-    let pokemonName = pokemonBase.name!
+    let pokemonName = pokemon.name!
     if let urlComponents = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/\(pokemonName)/") {
       guard let url = urlComponents.url else {
+        let error = PokeError.apiError("URL missing in request!")
+        completion(nil, error)
         return
       }
       dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
@@ -42,9 +43,9 @@ class DetailQueryService {
         }
         
         if let error = error {
-          self?.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
+          let error = PokeError.apiError("DataTask error: " + error.localizedDescription)
           DispatchQueue.main.async {
-            completion(nil, self?.errorMessage)
+            completion(nil, error)
             return
           }
         } else if
@@ -54,12 +55,18 @@ class DetailQueryService {
         {
           // OK
           DispatchQueue.main.async {
-            let pokemon = self?.parsePokemonDetailsJsonFromData(data, pokemonBase: pokemonBase)
-            completion(pokemon, nil)
+            do {
+              let pokemonDetails = try self?.parsePokemonDetailsJsonFromData(data, forPokemon: pokemon)
+              completion(pokemonDetails, nil)
+              return
+            } catch {
+              completion(nil, error)
+              return
+            }
           }
         } else {
           DispatchQueue.main.async {
-            completion(nil, self?.errorMessage)
+            completion(nil, error)
           }
         }
       }
@@ -67,66 +74,65 @@ class DetailQueryService {
     }
   }
   
-  private func parsePokemonDetailsJsonFromData(_ data: Data, pokemonBase: PokemonBase) -> Pokemon? {
-    
+  private func parsePokemonDetailsJsonFromData(_ data: Data, forPokemon pokemon: Pokemon) throws -> PokemonDetails {
     var response: JSONDictionary?
     
     do {
       response = try JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary
     } catch {
-      errorMessage += "JSONSerialization error: \(error.localizedDescription)\n"
-      return nil
+      throw error
     }
     
     guard let pokemonWeight  = response!["weight"] as? Int else {
-      errorMessage += "Dictionary does not containt weight key\n"
-      return nil
+      let error = PokeError.parseError("Dictionary does not containt weight key!")
+      throw error
     }
     
     guard let pokemonXp  = response!["base_experience"] as? Int else {
-      errorMessage += "Dictionary does not experience weight key\n"
-      return nil
+      let error = PokeError.parseError("Dictionary does not containt base experience key")
+      throw error
     }
     
     guard let spritesJson = response!["sprites"] as? JSONDictionary else {
-      errorMessage += "Dictionary does not contain sprites key\n"
-      return nil
+      let error = PokeError.parseError("Dictionary does not containt sprites key")
+      throw error
     }
     
     guard let otherJson = spritesJson.first(where: { $0.key == "other" })?.value as? JSONDictionary else {
-      return nil
+      let error = PokeError.parseError("Dictionary does not contain other key")
+      throw error
     }
     
     guard let homeJson = otherJson.first(where: { $0.key == "home" })?.value as? JSONDictionary else {
-      return nil
+      let error = PokeError.parseError("Dictionary does not contain home key")
+      throw error
     }
     
     guard
       let frontDefaultString = homeJson.first(where: { $0.key == "front_default" })?.value as? String,
       let spriteUrl = URL(string: frontDefaultString) else
     {
-      return nil
+      let error = PokeError.parseError("Dictionary does not containt front default key")
+      throw error
     }
     
     guard let pokemonID = response!["id"] as? Int64 else {
-      errorMessage += "Dictionaru does not containt id key"
-      return nil
+      let error = PokeError.parseError("Dictionary does not contain ID key")
+      throw error
     }
-    let pokemon = Pokemon()
-    pokemon.name = pokemonBase.name
-    pokemon.spriteUrl = spriteUrl
-    pokemon.pokemonWeight = pokemonWeight
-    pokemon.pokemonExp = pokemonXp
-    pokemon.pokemonID = pokemonID
+    var pokemonDetails = PokemonDetails()
+    pokemonDetails.spriteUrl = spriteUrl
+    pokemonDetails.pokemonWeight = pokemonWeight
+    pokemonDetails.pokemonExp = pokemonXp
+    pokemonDetails.pokemonID = pokemonID
     
     // Check if the pokemon is already saved in CoreData,
     // which means it's a favorite pokemon
     if let _ = FavoritePokemon.getPokemonWithId(pokemonID) {
-      pokemon.isFavorite = true
+      pokemonDetails.isFavorite = true
     }
     
-    
-    return pokemon
+    return pokemonDetails
   }
   
 }

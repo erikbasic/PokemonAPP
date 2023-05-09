@@ -13,13 +13,13 @@ import UIKit
 @objc(FavoritePokemon)
 public class FavoritePokemon: NSManagedObject {
   
-  var basePokemon: PokemonBase {
-    let basePokemon = PokemonBase()
-    basePokemon.name = pokemonName
-    basePokemon.pokemonURL = spriteURL
-    basePokemon.isFavorite = isFavorite
+  var pokemon: Pokemon {
+    var pokemon = Pokemon()
+    pokemon.name = pokemonName
+    pokemon.pokemonURL = spriteURL
+    pokemon.isFavorite = isFavorite
     
-    return basePokemon
+    return pokemon
   }
   
   static func getAllPokemons(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext) -> [FavoritePokemon] {
@@ -62,7 +62,7 @@ public class FavoritePokemon: NSManagedObject {
     newPokemon.pokemonName = name
     newPokemon.spriteURL = spriteURL
     newPokemon.pokemonWeight = 0
-    newPokemon.pokemonWeight = 0
+    newPokemon.pokemonExp = 0
     
     try context.save()
   }

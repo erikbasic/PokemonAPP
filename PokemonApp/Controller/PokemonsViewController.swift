@@ -12,10 +12,10 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var searchBar: UISearchBar!
-  private var pokemons = [PokemonBase]()
-  private var selectedPokemon: PokemonBase?
+  private var pokemons = [Pokemon]()
+  private var selectedPokemon: Pokemon?
   private let queryService = QueryService()
-  private var filteredPokemons = [PokemonBase]()
+  private var filteredPokemons = [Pokemon]()
   
   
   // MARK: - View lifecycle
@@ -33,7 +33,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     activityIndicator.startAnimating()
     
     // Load data source
-    queryService.getPokemons { (pokemons: [PokemonBase], error: String) in
+    queryService.getPokemons { (pokemons: [Pokemon], error: String) in
       self.pokemons = pokemons.sorted()
       self.filteredPokemons = pokemons
       self.tableView.reloadData()
@@ -51,7 +51,7 @@ class PokemonsViewController: UIViewController, UITableViewDataSource, UITableVi
     // Pass the selected object to the new view controller.
     
     let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
-    pokemonDetailViewController.basePokemon = selectedPokemon
+    pokemonDetailViewController.pokemon = selectedPokemon
   }
   
   

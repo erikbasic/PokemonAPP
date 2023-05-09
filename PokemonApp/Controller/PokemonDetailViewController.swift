@@ -16,8 +16,7 @@ class PokemonDetailViewController: UIViewController {
   
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
-  var basePokemon: PokemonBase!
-  private var pokemon: Pokemon!
+  var pokemon: Pokemon!
   private var favoriteButton: UIBarButtonItem!
   private let queryService = QueryService()
   private let detailQuery = DetailQueryService()
@@ -27,7 +26,7 @@ class PokemonDetailViewController: UIViewController {
     
     // Do any additional setup after loading the view.
     
-    title = basePokemon.finalName
+    title = pokemon.finalName
     favoriteButton = navigationItem.rightBarButtonItem
     favoriteButton.target = self
     favoriteButton.action = #selector(toggleFavorite(sender:))
@@ -38,23 +37,30 @@ class PokemonDetailViewController: UIViewController {
     
     activityIndicator.startAnimating()
     //    Load data source for detail
-    detailQuery.getPokemonDetailsFor(basePokemon) { pokemon, errorString in
-      guard let pokemon = pokemon else {
+    detailQuery.getPokemonDetailsFor(pokemon) { pokemonDetails, errorString in
+      guard let pokemonDetails = pokemonDetails else {
         return
       }
-      if let pokemonWeight = pokemon.pokemonWeight {
+      if let pokemonID = pokemonDetails.pokemonID {
+        self.pokemon.pokemonID = pokemonID
+      }
+      if let pokemonWeight = pokemonDetails.pokemonWeight {
         // dynamic weight
         self.weightLabel.text = "Weight: \(pokemonWeight)"
-        
+        self.pokemon.pokemonWeight = pokemonWeight
       }
-      if let pokemonXP = pokemon.pokemonExp {
+      if let pokemonXP = pokemonDetails.pokemonExp {
         self.xpLabel.text = "Base XP: \(pokemonXP)"
+        self.pokemon.pokemonExp = pokemonXP
       }
-      
-      self.updateFavoriteButtonImageForPokemon(pokemon)
+      if let pokemonIsFavorite = pokemonDetails.isFavorite {
+        self.pokemon.isFavorite = pokemonIsFavorite
+      }
+      self.updateFavoriteButtonImageForPokemon(self.pokemon)
       
       // dynamic image
-      let url = pokemon.spriteUrl
+      let url = pokemonDetails.spriteUrl
+      self.pokemon.spriteUrl = url
       DispatchQueue.global().async{
         let data = try? Data(contentsOf: url!)
         DispatchQueue.main.async {
@@ -62,30 +68,13 @@ class PokemonDetailViewController: UIViewController {
           self.activityIndicator.stopAnimating()
         }
       }
-      
-      self.pokemon = pokemon
     }
   }
   
   // MARK: - Selectors
-  
-  // 1. Provjeri Core Datu preko ID-a -> Pokemon nije favorite -> Pokazi praznu zvijezdicu
-  // Ukoliko pritisnemo zvijezdicu -> isFavorite postaje True -> Spremi ga u Core Datu
-  //  2. Provjeri CoreD Datu preko ID-a - Pokemon je favorite -> Pokazi punu zvijezdicu
-  //  Pritisnemo zvijezdicu -> isFavorite postaje False -> Brisi ga iz Core Date
-  
-  
-  
-  
+
   @objc private func toggleFavorite(sender: UIBarButtonItem) {
-    //    case 1: isFavorite FALSE -- pokemon.isFavorite FALSE
-    //            isFavorite FALSE -- pokemon.isFavorite TRUE
-    //     Ovdje se radi sigurno o upisu
-    //    case 2: isFavorite TRUE - pokemon.isFavorite TRUE
-    //            isFavorite TRUE - pokemon.isFavorite FALSE
-    
-    // Try to get this pokemon from CoreData
-    // and check if favorite
+
     
     guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
       return
@@ -95,7 +84,6 @@ class PokemonDetailViewController: UIViewController {
     
     
     pokemon.isFavorite = !isFavorite
-    // realizirati upis, tj brisanje podataka
     if pokemon.isFavorite == true {
       // Save pokemon to CoreData
       do {

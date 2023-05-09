@@ -31,7 +31,7 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource, U
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritePokemonCell", for: indexPath) as! FavoritePokemonCell
     let pokemon = favoritePokemons[indexPath.row]
-    cell.favPokemonLabel.text = pokemon.basePokemon.finalName
+    cell.favPokemonLabel.text = pokemon.pokemon.finalName
     return cell
   }
   
@@ -68,7 +68,7 @@ class FavoritePokemonsViewController: UIViewController, UITableViewDataSource, U
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetailsFromFavorites" {
       let pokemonDetailViewController = segue.destination as! PokemonDetailViewController
-      pokemonDetailViewController.basePokemon = selectedPokemon!.basePokemon
+      pokemonDetailViewController.pokemon = selectedPokemon!.pokemon
     }
   }
   
